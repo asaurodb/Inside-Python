@@ -1,6 +1,6 @@
 // Gera js/outputs.js: resultado real (CPython) do 1º exemplo de cada tópico, usado na etapa "Observe". Rode: node tools/gen-outputs.js
 const fs = require('fs'), path = require('path'), { spawnSync } = require('child_process');
-global.window = {}; ['lessons.js', 'lessons2.js', 'lessons3.js'].forEach(f => eval(fs.readFileSync(path.join(__dirname, '../js', f), 'utf8')));
+global.window = {}; ['lessons.js', 'lessons2.js', 'lessons3.js', 'curriculo.js'].forEach(f => eval(fs.readFileSync(path.join(__dirname, '../js', f), 'utf8')));
 const O = {};
 window.LESSONS.forEach(l => l.topics.forEach(t => { if (!t.ex) return;
   const r = JSON.parse(spawnSync('python3', [path.join(__dirname, '../tests/pydriver.py')], { input: JSON.stringify({ code: t.ex[0] }), encoding: 'utf8' }).stdout);

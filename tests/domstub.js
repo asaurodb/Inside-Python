@@ -39,7 +39,7 @@ E.fresh = (init = {}, opts = {}) => {
   delete global.IPNav;
 };
 E.load = files => files.forEach(f => (0, eval)(fs.readFileSync(path.join(__dirname, '../js', f), 'utf8')));
-E.data = ['lessons.js', 'lessons2.js', 'lessons3.js', 'outputs.js'];
+E.data = ['lessons.js', 'lessons2.js', 'lessons3.js', 'curriculo.js', 'outputs.js'];
 E.app = [...E.data, 'main.js', 'app.js'];
 E.hashchange = h => { global.location.hash = h; (E.winH.hashchange || []).forEach(f => f()); };
 E.sleep = ms => new Promise(r => setTimeout(r, ms));

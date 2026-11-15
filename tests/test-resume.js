@@ -1,6 +1,6 @@
 // Testa a lógica REAL de retomada (extraída de app.js) nos cenários pedidos, incluindo migração de dados antigos.
 const fs = require('fs'), path = require('path'), assert = require('assert');
-global.window = {}; eval(fs.readFileSync(path.join(__dirname, '../js/lessons.js'), 'utf8')); eval(fs.readFileSync(path.join(__dirname, '../js/lessons2.js'), 'utf8'));
+global.window = {}; ['lessons.js', 'lessons2.js', 'lessons3.js', 'curriculo.js'].forEach(f => eval(fs.readFileSync(path.join(__dirname, '../js', f), 'utf8')));
 const app = fs.readFileSync(path.join(__dirname, '../js/app.js'), 'utf8'), L = window.LESSONS;
 const grab = (a, b) => app.slice(app.indexOf(a), app.indexOf(b, app.indexOf(a)));
 const src = grab('function norm0(', '\n') + '\n' + grab('function pct(', '\n') + '\n' + grab('/* ---- Retomada', '/* ---- fim da retomada');
@@ -14,12 +14,12 @@ function check(nome, s, hash, state, label) {
   if (!ok) bad++; console.log(ok ? '✔' : '✘', nome, '→', '#' + t.hash, '|', c.text, ok ? '' : `(esperado #${hash} | ${label})`);
 }
 // 1 usuário novo (abrir a aula, sem concluir nada, NÃO conta como progresso)
-check('1. Usuário novo', blank(), 'aula-1-t1', 'new', 'Comece Agora');
-let s = blank(); s.pos = { l: 3, k: 't', id: 't2' }; s.last = 3; check('1b. Só abriu a Aula 3 (nada concluído)', s, 'aula-1-t1', 'new', 'Comece Agora');
+check('1. Usuário novo', blank(), 'aula-1-t7', 'new', 'Comece Agora');
+let s = blank(); s.pos = { l: 3, k: 't', id: 't2' }; s.last = 3; check('1b. Só abriu a Aula 3 (nada concluído)', s, 'aula-1-t7', 'new', 'Comece Agora');
 // 2 apenas um tópico concluído
-s = blank(); s.t['1.t1'] = 1; s.pos = { l: 1, k: 't', id: 't1' }; s.last = 1; check('2. Só o tópico 1 concluído', s, 'aula-1-t2', 'resume', 'Continuar Estudando');
+s = blank(); s.t['1.t7'] = 1; s.pos = { l: 1, k: 't', id: 't7' }; s.last = 1; check('2. Só o primeiro tópico concluído', s, 'aula-1-t1', 'resume', 'Continuar Estudando');
 // 3 aula interrompida (exemplo do enunciado: 3 primeiros tópicos da Aula 2)
-s = blank(); ['t1', 't2', 't3'].forEach(t => s.t['2.' + t] = 1); s.pos = { l: 2, k: 't', id: 't3' }; s.last = 2; check('3. Aula 2 interrompida após 3 tópicos', s, 'aula-2-t4', 'resume', 'Continuar Estudando');
+s = blank(); ['t1', 't2', 't3'].forEach(t => s.t['2.' + t] = 1); s.pos = { l: 2, k: 't', id: 't3' }; s.last = 2; check('3. Aula 2 interrompida após 3 tópicos (o próximo da sequência é o t5)', s, 'aula-2-t5', 'resume', 'Continuar Estudando');
 s.pos = { l: 2, k: 't', id: 't4' }; check('3b. ...e ele estava lendo o tópico 4', s, 'aula-2-t4', 'resume', 'Continuar Estudando');
 // 4 exercício pendente (iniciado depois da última conclusão) tem prioridade; tentativa antiga é ignorada
 s = blank(); L[1].topics.forEach(t => s.t['2.' + t.id] = 1); s.at = 1000; s.a['2.e3'] = 2000; s.pos = { l: 2, k: 'e', id: 'e3' }; s.last = 2; check('4. Exercício 3 iniciado e não concluído', s, 'aula-2-e3', 'resume', 'Continuar Estudando');
@@ -28,7 +28,7 @@ s = blank(); L[1].topics.forEach(t => s.t['2.' + t.id] = 1); L[1].ex.forEach(e =
 // 5 aula concluída → próxima aula com pendências (sem bloqueios)
 s = finish(blank(), 1); s.pos = { l: 1, k: 'quiz' }; s.last = 1; check('5. Aula 1 concluída → Aula 2', s, 'aula-2-t1', 'resume', 'Continuar Estudando');
 s = finish(finish(blank(), 1), 2); finish(s, 4); s.last = 2; s.pos = { l: 2, k: 'quiz' }; check('5b. Aulas 1,2,4 prontas → pula para a Aula 3', s, 'aula-3-t1', 'resume', 'Continuar Estudando');
-s = blank(); [2, 3, 4, 5].forEach(i => finish(s, i)); s.last = 5; s.pos = { l: 5, k: 'quiz' }; check('5c. Só a Aula 1 pendente → volta a ela', s, 'aula-1-t1', 'resume', 'Continuar Estudando');
+s = blank(); [2, 3, 4, 5].forEach(i => finish(s, i)); s.last = 5; s.pos = { l: 5, k: 'quiz' }; check('5c. Só a Aula 1 pendente → volta a ela', s, 'aula-1-t7', 'resume', 'Continuar Estudando');
 // 6 tudo concluído
 s = blank(); [1, 2, 3, 4, 5].forEach(i => finish(s, i)); s.last = 5; check('6. Cinco aulas concluídas', s, 'praticar', 'done', 'Revisar Conteúdos');
 // 7 fechar e reabrir o navegador (ida e volta pelo localStorage) + migração de dado antigo

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inside Python – Descubra o universo da programação com Python</title>
+<meta name="description" content="Inside Python: plataforma educacional criada por estudantes do Senac para quem quer dar os primeiros passos em Python.">
+<meta name="theme-color" content="#050b1f">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="py" viewBox="0 0 120 120"><path fill="#4B8BBE" d="M58 8C34 8 32 18 32 18v14h27v5H22S6 35 6 60s14 24 14 24h9V72s-1-14 14-14h24s13 0 13-13V21S80 8 58 8z"/><path fill="#FFD43B" transform="rotate(180 60 60)" d="M58 8C34 8 32 18 32 18v14h27v5H22S6 35 6 60s14 24 14 24h9V72s-1-14 14-14h24s13 0 13-13V21S80 8 58 8z"/><circle cx="44" cy="22" r="3.6" fill="#050b1f"/><circle cx="76" cy="98" r="3.6" fill="#050b1f"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 016.5 3H20v16H6.5A2.5 2.5 0 004 21.5zM4 5.5V21M8 7h8"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></symbol>
+<symbol id="i-redo" viewBox="0 0 24 24"><path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/></symbol></defs></svg>
+<a class="skip" href="#conteudo">Ir para o conteúdo</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#inicio" aria-label="Inside Python – início"><svg class="brand__sym" aria-hidden="true"><use href="#py"/></svg><span class="brand__t">Inside <b>Python</b></span></a>
+    <button class="nav__btn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    <nav id="menu" class="nav__menu" aria-label="Principal">
+      <a href="#inicio">Início</a><a href="#sobre">Sobre o Projeto</a><a href="#equipe">Equipe</a>
+      <div class="dd" id="dd">
+        <button class="dd__btn" type="button" aria-expanded="false" aria-controls="dd-list">Aprender<svg class="dd__chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4"/></svg></button>
+        <ul class="dd__list" id="dd-list" hidden>
+          <li><a href="#aulas">Aulas</a></li>
+          <li><a href="#praticar">Hora de Praticar</a></li>
+          <li><a href="#glossario">Glossário</a></li>
+          <li><button type="button" data-err-open>Entenda o Erro</button></li>
+        </ul>
+      </div>
+      <a class="btn btn--yellow nav__cta" id="cta" href="#aula-1-t1"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg><span>Comece Agora</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+<section class="hero" id="inicio">
+  <div class="wrap hero__in">
+    <div class="hero__txt">
+      <p class="hello"><span></span>Seja bem-vindo ao Inside Python</p>
+      <h1>Descubra o universo da programação com <em>Python.</em></h1>
+      <p class="lead">Explore os fundamentos da programação, conheça nossa proposta educacional e dê os primeiros passos no mundo da tecnologia.</p>
+      <div class="actions"><a class="btn btn--blue" href="#sobre">Conheça o projeto</a><a class="btn btn--ghost" href="#aulas">Explorar aulas</a></div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="glow"></div>
+      <svg class="py" viewBox="0 0 120 120"><defs><linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6aa8ff"/><stop offset="1" stop-color="#1f4fd8"/></linearGradient><linearGradient id="gy" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe680"/><stop offset="1" stop-color="#f0b400"/></linearGradient></defs>
+        <path d="M58 8C34 8 32 18 32 18v14h27v5H22S6 35 6 60s14 24 14 24h9V72s-1-14 14-14h24s13 0 13-13V21S80 8 58 8z" fill="url(#gb)"/>
+        <path d="M58 8C34 8 32 18 32 18v14h27v5H22S6 35 6 60s14 24 14 24h9V72s-1-14 14-14h24s13 0 13-13V21S80 8 58 8z" fill="url(#gy)" transform="rotate(180 60 60)"/>
+        <circle cx="44" cy="22" r="3.5" fill="#fff"/><circle cx="76" cy="98" r="3.5" fill="#fff"/></svg>
+      <div class="win">
+        <div class="win__bar"><i></i><i></i><i></i><span>primeiro_codigo.py</span></div>
+        <pre><span class="c"># seu primeiro passo</span>
+<span class="k">def</span> <span class="f">aprender</span>(linguagem):
+    <span class="k">return</span> <span class="s">f"Vamos de {linguagem}!"</span>
+
+<span class="f">print</span>(aprender(<span class="s">"Python"</span>))</pre>
+      </div>
+      <span class="chip chip--a">&lt;/&gt;</span><span class="chip chip--b">{ }</span><span class="chip chip--c">def</span>
+    </div>
+  </div>
+</section>
+
+<section class="panel-sec" id="painel" aria-label="Painel de aprendizagem"><div class="wrap" id="painel-in"></div></section>
+
+<section class="sec" id="porque">
+  <div class="wrap">
+    <h2 class="rv">Por que aprender <em>Python?</em></h2>
+    <div class="grid4">
+      <article class="card rv"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg><h3>Sintaxe Simples</h3><p>Python tem uma sintaxe relativamente simples e acessível, ótima para quem está começando.</p></article>
+      <article class="card rv"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><h3>Diversas Aplicações</h3><p>Usado em desenvolvimento, automação, dados e inteligência artificial, e funciona em várias plataformas.</p></article>
+      <article class="card rv"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><h3>Análise de Dados</h3><p>Python é muito utilizado para processar e interpretar informações.</p></article>
+      <article class="card rv"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0012 3z"/></svg><h3>Projetos Incríveis</h3><p>Programar permite transformar ideias em soluções tecnológicas.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--alt" id="sobre">
+  <div class="wrap about">
+    <div>
+      <h2 class="rv">Sobre o <em>Projeto</em></h2>
+      <p class="rv">O Inside Python é um projeto criado por um grupo de estudantes apaixonados por tecnologia e programação. Nosso objetivo é compartilhar o aprendizado e o entusiasmo por Python com todos que buscam melhorar suas habilidades na linguagem.</p>
+      <p class="rv">Python é uma linguagem poderosa, versátil e acessível. Queremos torná-la mais próxima de todos, oferecendo materiais, dicas e projetos práticos para quem está começando ou quer se aprofundar mais.</p>
+      <p class="rv">A equipe é composta por estudantes que acreditam no poder do conhecimento colaborativo e trabalham juntos para criar um ambiente onde todos podem aprender e crescer.</p>
+      <blockquote class="quote rv">Nosso propósito é compartilhar conhecimento, apresentar a linguagem Python e ajudar você a dar os primeiros passos na programação.</blockquote>
+    </div>
+    <div class="side rv">
+      <figure class="art">
+        <svg viewBox="0 0 560 420" role="img" aria-labelledby="art-t art-d" xmlns="http://www.w3.org/2000/svg"><title id="art-t">Ambiente de programação Python</title><desc id="art-d">Ilustração de um editor de código com um programa em Python, o resultado na tela e um cartão de progresso de aula.</desc>
+          <defs><linearGradient id="ab" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6aa8ff"/><stop offset="1" stop-color="#1f4fd8"/></linearGradient><linearGradient id="ay" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe680"/><stop offset="1" stop-color="#f0b400"/></linearGradient><linearGradient id="aw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1c44"/><stop offset="1" stop-color="#08122b"/></linearGradient><radialGradient id="ag" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#22d3ee" stop-opacity=".35"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient></defs>
+          <ellipse cx="280" cy="220" rx="270" ry="190" fill="url(#ag)"/>
+          <g stroke="#6aa8ff" stroke-opacity=".25" fill="none"><path d="M40 60h60l24 24M520 340h-70l-24-24"/><circle cx="40" cy="60" r="4" fill="#22d3ee"/><circle cx="520" cy="340" r="4" fill="#ffd43b"/></g>
+          <g class="a-win"><rect x="50" y="70" width="400" height="250" rx="16" fill="url(#aw)" stroke="#6aa8ff" stroke-opacity=".35"/>
+            <path d="M50 86a16 16 0 0116-16h368a16 16 0 0116 16v22H50z" fill="#14224d"/><circle cx="72" cy="89" r="5" fill="#ef6b73"/><circle cx="90" cy="89" r="5" fill="#ffd43b"/><circle cx="108" cy="89" r="5" fill="#4ade80"/><text x="135" y="93" fill="#9fb0d3" font-family="monospace" font-size="12">aula_01.py</text>
+            <rect x="50" y="108" width="40" height="150" fill="#0a1637"/>
+            <g font-family="JetBrains Mono,monospace" font-size="14"><g fill="#546390"><text x="62" y="136">1</text><text x="62" y="160">2</text><text x="62" y="184">3</text><text x="62" y="208">4</text><text x="62" y="232">5</text></g>
+              <text x="104" y="136" fill="#6f84ad"># meu primeiro programa</text>
+              <text x="104" y="160"><tspan fill="#6aa8ff">nome</tspan><tspan fill="#d6e2ff"> = </tspan><tspan fill="#ffd43b">"Inside Python"</tspan></text>
+              <text x="104" y="184"><tspan fill="#6aa8ff">idade</tspan><tspan fill="#d6e2ff"> = </tspan><tspan fill="#ffd43b">17</tspan></text>
+              <text x="104" y="208"><tspan fill="#22d3ee">print</tspan><tspan fill="#d6e2ff">(</tspan><tspan fill="#ffd43b">"Olá,"</tspan><tspan fill="#d6e2ff">, nome)</tspan></text>
+              <rect class="a-caret" x="104" y="218" width="9" height="16" fill="#ffd43b"/></g>
+            <rect x="50" y="262" width="400" height="58" rx="0" fill="#050b1f"/><path d="M50 304a16 16 0 0016 16h368a16 16 0 0016-16v16H50z" fill="#050b1f"/>
+            <text x="68" y="285" fill="#546390" font-family="monospace" font-size="12">SAÍDA</text><text x="68" y="306" fill="#4ade80" font-family="monospace" font-size="14">&gt;&gt;&gt; Olá, Inside Python</text></g>
+          <g class="a-card"><rect x="360" y="40" width="170" height="86" rx="14" fill="#10204d" stroke="#6aa8ff" stroke-opacity=".5"/><text x="378" y="68" fill="#aab6d3" font-family="IBM Plex Sans,sans-serif" font-size="13">Aula 2 · Variáveis</text><rect x="378" y="82" width="134" height="8" rx="4" fill="#233252"/><rect class="a-bar" x="378" y="82" width="90" height="8" rx="4" fill="#ffd43b"/><text x="378" y="112" fill="#ffd43b" font-family="monospace" font-size="12">✔ 3 de 5 exercícios</text></g>
+          <g class="a-py"><path d="M58 8C34 8 32 18 32 18v14h27v5H22S6 35 6 60s14 24 14 24h9V72s-1-14 14-14h24s13 0 13-13V21S80 8 58 8z" fill="url(#ab)" transform="translate(405 235) scale(1.1)"/><path d="M58 8C34 8 32 18 32 18v14h27v5H22S6 35 6 60s14 24 14 24h9V72s-1-14 14-14h24s13 0 13-13V21S80 8 58 8z" fill="url(#ay)" transform="translate(405 235) scale(1.1) rotate(180 60 60)"/></g>
+          <g class="a-chip" font-family="monospace" font-weight="700" font-size="18"><rect x="14" y="300" width="52" height="52" rx="14" fill="#10204d" stroke="#6aa8ff" stroke-opacity=".5"/><text x="26" y="333" fill="#22d3ee">{ }</text></g>
+        </svg>
+        <figcaption>Aprender, experimentar e acompanhar o progresso, tudo no mesmo lugar.</figcaption></figure>
+      <ul class="facts">
+        <li><b>Origem</b> Estudantes apaixonados por tecnologia e programação.</li>
+        <li><b>Público</b> Quem está começando ou quer se aprofundar em Python.</li>
+        <li><b>Contexto</b> Projeto acadêmico de estudantes do Senac.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="equipe">
+  <div class="wrap">
+    <h2 class="rv">Nossa <em>Equipe</em></h2>
+    <p class="sub rv">Um grupo de estudantes e entusiastas da tecnologia. Cada membro trouxe suas habilidades e paixão pela programação para criar uma plataforma acessível e rica em conteúdo.</p>
+    <div class="team">
+      <article class="card rv"><span class="av" aria-hidden="true">AS</span><h3>Arthur Sauro</h3><p class="role">Desenvolvedor</p><p>Ajudou a estruturar a parte técnica do site, desenvolvendo as funcionalidades e garantindo que tudo funcione perfeitamente.</p></article>
+      <article class="card rv"><span class="av" aria-hidden="true">RM</span><h3>Richard Moreira</h3><p class="role">Designer e Desenvolvedor</p><p>Responsável pelo design do site, criando uma interface amigável e acessível.</p></article>
+      <article class="card rv"><span class="av" aria-hidden="true">JB</span><h3>João Bradac</h3><p class="role">Líder</p><p>Contribuiu com sua expertise em liderança, ajudando a criar conteúdo relevante e dar direção para a criação do site.</p></article>
+      <article class="card rv"><span class="av" aria-hidden="true">AC</span><h3>Arthur Henrique Carvalho</h3><p class="role">Professor</p><p>Criador da videoaula que explica conceitos fundamentais do Python, com conteúdo didático pensado para iniciantes.</p></article>
+      <article class="card rv"><span class="av" aria-hidden="true">NO</span><h3>Nathan Oliveira</h3><p class="role">Pesquisador / Organizacional</p><p>Auxiliou na organização do projeto e contribuiu com pesquisas para embasar a criação do site.</p></article>
+      <article class="card rv"><span class="av" aria-hidden="true">LF</span><h3>Lucas Felipe</h3><p class="role">Revisor / Apoio</p><p>Colaborou revisando o conteúdo e apoiando a equipe durante o desenvolvimento.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--alt" id="aulas">
+  <div class="wrap">
+    <h2 class="rv">Comece suas <em>aulas</em></h2>
+    <p class="sub rv">Aulas de Python para dar os primeiros passos.</p>
+    <article class="lesson rv">
+      <div class="player" id="player">
+        <button class="play" id="playBtn" type="button" aria-label="Assistir à videoaula da Aula 1"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button>
+        <span class="player__tag">Videoaula · Aula 1</span>
+      </div>
+      <div class="lesson__body">
+        <span class="tag tag--on">Disponível</span> <span class="tag">Introdução ao Python</span>
+        <h3>Aula 1: Introdução ao Python</h3>
+        <p>Nesta aula, vamos abordar os fundamentos da linguagem Python.</p>
+        <p class="small">Videoaula criada por Arthur Henrique Carvalho.</p>
+        <div class="actions">
+          <button class="btn btn--yellow" id="watchBtn" type="button">Assistir à videoaula</button>
+          <a class="btn btn--blue" href="#aula-1">Estudar a Aula 1 na plataforma</a>
+          <a class="btn btn--ghost" href="https://colab.research.google.com/drive/1t9mxslkMAQFUQeJvBIo8rGVgaEMYfYWJ" target="_blank" rel="noopener noreferrer">Material no Google Colab<span class="sr"> (abre em nova aba)</span></a>
+        </div>
+        <p class="note" id="note" hidden></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="pratique">
+  <div class="wrap">
+    <h2 class="rv">Seu primeiro <em>código Python.</em></h2>
+    <p class="sub rv">Edite o código abaixo e clique em <b>Executar</b>. O Python roda de verdade no seu navegador (via Pyodide); o primeiro carregamento exige internet e pode levar alguns segundos.</p>
+    <div id="home-editor" class="rv"></div>
+  </div>
+</section>
+
+<section class="sec sec--alt" id="caminho">
+  <div class="wrap">
+    <h2 class="rv">Caminho do <em>aprendizado</em></h2>
+    <p class="sub rv">Cinco etapas para os primeiros passos. Cada aula tem conteúdo escrito, exemplos executáveis e exercícios. O vídeo é opcional: onde ele ainda não foi publicado, aparece "Vídeo em breve" e o estudo continua liberado.</p>
+    <ol class="path" id="path"></ol>
+    <p class="priv" id="resume"></p>
+  </div>
+</section>
+
+<section class="sec sec--alt" id="praticar-home">
+  <div class="wrap pract">
+    <div><h2 class="rv">Hora de <em>Praticar</em></h2><p class="sub rv">Exercícios extras, diferentes dos das aulas, organizados por tema: primeiros comandos, variáveis, operações, condicionais e desafios mistos. Escolha o assunto que quer revisar, com a dificuldade e o objetivo de cada atividade. Sem pontuação e sem pressa.</p></div>
+    <a class="btn btn--yellow rv" href="#praticar">Ir para a Hora de Praticar</a>
+  </div>
+</section>
+
+<section class="sec" id="glossario">
+  <div class="wrap">
+    <h2 class="rv">Glossário <em>Python</em></h2>
+    <p class="sub rv">Termos usados nas aulas, em linguagem simples. Dentro de uma aula, clique em um termo sublinhado para ver a definição sem sair dela.</p>
+    <label class="gsearch"><span class="sr">Buscar termo no glossário</span><input id="gq-home" type="search" placeholder="Buscar termo…" autocomplete="off"></label>
+    <div class="gloss" id="gloss-home"></div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap faq">
+    <h2 class="rv">Perguntas <em>frequentes</em></h2>
+    <details class="rv"><summary>Como começo a estudar?</summary><p>Clique em “Comece Agora” (ou “Começar pela Aula 1”). Na primeira vez, uma apresentação rápida mostra como a plataforma funciona, e você pode pulá-la. Depois você entra na Aula 1, no primeiro tópico. Não há cadastro nem login.</p></details>
+    <details class="rv"><summary>Como funcionam os tópicos?</summary><p>Cada tópico tem cinco etapas curtas: Entenda (a ideia, em linguagem simples), Observe (um exemplo explicado linha por linha), Experimente (você altera e executa o código), Pratique (exercícios do tópico) e Revise (um resumo e uma pergunta rápida). No Estudo Guiado você vê uma etapa por vez; na Navegação Livre, todas as etapas do tópico aparecem juntas. Nada fica bloqueado: você pode ir e voltar.</p></details>
+    <details class="rv"><summary>Como executo os códigos?</summary><p>Nas etapas Experimente e Pratique há um editor. O botão “Executar código” roda o programa de verdade, com Python no seu navegador (via Pyodide), e mostra o resultado. Na primeira execução, o site baixa o interpretador, então é preciso internet e pode levar alguns segundos. Programas que passam de 8 segundos são interrompidos.</p></details>
+    <details class="rv"><summary>Como verifico os exercícios?</summary><p>“Executar” só roda o seu programa. “Verificar resposta” testa se ele resolve o exercício: o site executa o seu código com valores diferentes e confere o comportamento, então soluções diferentes podem estar certas. O retorno diz se há erro de sintaxe, erro durante a execução, resultado diferente do esperado, resposta incompleta ou resposta correta. A verificação confere o resultado, não o jeito de pensar.</p></details>
+    <details class="rv"><summary>Como uso as dicas?</summary><p>Cada exercício tem até três dicas, que aparecem uma de cada vez: primeiro uma lembrança do conceito, depois uma estratégia e, por fim, a estrutura da solução com lacunas. A solução completa só pode ser vista depois de você tentar verificar a resposta, e vem com uma explicação.</p></details>
+    <details class="rv"><summary>Meu progresso fica salvo?</summary><p>Sim, mas apenas neste navegador e neste aparelho, sem cadastro. Se você limpar os dados do navegador, usar outro aparelho ou uma aba anônima, ele não será encontrado: não há sincronização entre dispositivos. O progresso serve de orientação e não bloqueia nenhuma aula.</p></details>
+    <details class="rv"><summary>Como continuo de onde parei?</summary><p>Quando você tem progresso, o botão amarelo do menu vira “Continuar Estudando” e leva direto ao ponto pendente mais recente. O painel de aprendizagem, logo abaixo do início da página, mostra a aula atual, o último tópico e a próxima atividade. Só são marcados como concluídos os tópicos que você conclui e os exercícios que você acerta: abrir um conteúdo não conta.</p></details>
+    <details class="rv"><summary>Preciso instalar Python no computador?</summary><p>Não. Tudo roda dentro do site. Instalar o Python só será necessário mais adiante, quando você quiser criar programas fora daqui.</p></details>
+    <details class="rv"><summary>Posso estudar pelo celular?</summary><p>Pode. O menu das aulas fica recolhido, os exercícios aparecem em uma coluna e os botões têm tamanho confortável. Digitar código no celular é mais lento; para os exercícios maiores, computador ou tablet costumam ser mais confortáveis.</p></details>
+    <details class="rv"><summary>O que faço quando meu código dá erro?</summary><p>Respire: errar faz parte. Leia a mensagem, que costuma dizer o tipo do erro e a linha. Clique em “Entenda este erro” para ver o que ele significa, um exemplo errado e um corrigido. Se ainda assim travar, use as dicas do exercício, uma de cada vez, e tente de novo.</p></details>
+    <p class="faq-help"><button class="linkbtn" type="button" data-welcome-open>Ver apresentação inicial</button><span class="small"> Rever a introdução não altera o seu progresso.</span></p>
+  </div>
+</section>
+</main>
+<main id="lesson" hidden aria-label="Ambiente de aulas"></main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div><a class="brand" href="#inicio" aria-label="Inside Python – início"><svg class="brand__sym" aria-hidden="true"><use href="#py"/></svg><span class="brand__t">Inside <b>Python</b></span></a>
+      <p>Projeto acadêmico criado por estudantes do Senac para compartilhar o aprendizado e o entusiasmo por Python.</p></div>
+    <nav aria-label="Rodapé"><a href="#inicio">Início</a><a href="#sobre">Sobre o Projeto</a><a href="#equipe">Equipe</a><a href="#aulas">Aulas</a><a href="#praticar">Hora de Praticar</a><a href="#glossario">Glossário</a><a href="#" data-err-open>Entenda o Erro</a></nav>
+    <div><p><strong>Professor Sthuwart de Assis S.</strong></p><p><a href="mailto:pjinsidepython@gmail.com">pjinsidepython@gmail.com</a></p>
+      <p class="small">Equipe: Arthur Sauro, Richard Moreira, João Bradac, Arthur Henrique Carvalho, Nathan Oliveira e Lucas Felipe.</p></div>
+  </div>
+</footer>
+<dialog id="welcome" class="wdlg" aria-label="Boas-vindas ao Inside Python">
+  <div class="wdlg__top"><svg class="brand__sym" aria-hidden="true"><use href="#py"/></svg><p class="small" id="wcount" aria-live="polite">Etapa 1 de 3</p><button class="linkbtn" type="button" data-wskip>Pular apresentação</button></div>
+  <div class="wstep"><h2 tabindex="-1">Bem-vindo ao Inside Python!</h2><p>O Inside Python foi criado por estudantes para você dar os primeiros passos na programação com Python, de forma simples, interativa e no seu ritmo.</p><p>Aqui, errar faz parte: experimente à vontade e aprenda colocando a mão no código.</p></div>
+  <div class="wstep" hidden><h2 tabindex="-1">Aprenda colocando em prática</h2>
+    <ol class="wlist"><li><b>Aulas curtas:</b> cada tópico tem explicação, exemplo, experimento, exercício e revisão.</li><li><b>Editor de código:</b> o Python roda de verdade no seu navegador. Altere o código e clique em “Executar código”.</li><li><b>Exercícios:</b> com dicas, uma de cada vez, se você travar.</li><li><b>Verificar resposta:</b> testa se o seu programa resolve o exercício.</li></ol>
+    <svg class="wart" viewBox="0 0 320 96" aria-hidden="true"><rect x="2" y="2" width="316" height="92" rx="12" fill="#08122b" stroke="#6aa8ff" stroke-opacity=".4"/><circle cx="18" cy="16" r="4" fill="#ef6b73"/><circle cx="32" cy="16" r="4" fill="#ffd43b"/><circle cx="46" cy="16" r="4" fill="#4ade80"/><g font-family="monospace" font-size="13"><text x="18" y="46" fill="#6aa8ff">nome <tspan fill="#d6e2ff">= </tspan><tspan fill="#ffd43b">"Ana"</tspan></text><text x="18" y="68" fill="#22d3ee">print<tspan fill="#d6e2ff">(nome)</tspan></text></g><rect x="200" y="36" width="104" height="44" rx="8" fill="#050b1f"/><text x="212" y="63" font-family="monospace" font-size="13" fill="#4ade80">&gt;&gt;&gt; Ana</text></svg></div>
+  <div class="wstep" hidden><h2 tabindex="-1">Tudo pronto para começar!</h2><p>O Inside Python tem cinco aulas, e você pode estudar na ordem que preferir. Seu progresso é salvo neste navegador, para você continuar de onde parou.</p><p class="small">Ele fica apenas neste aparelho e navegador: não há sincronização com outros dispositivos.</p></div>
+  <div class="wdlg__bot"><span class="wdots" aria-hidden="true"><i></i><i></i><i></i></span><button class="btn btn--ghost" type="button" data-wp>Voltar</button><button class="btn btn--yellow" type="button" data-wn>Continuar</button><button class="btn btn--yellow" type="button" data-wgo hidden>Iniciar Aula 1</button></div>
+</dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<dialog id="gloss" class="gdlg" aria-label="Glossário Python"><div class="gdlg__bar"><h2>Glossário Python</h2><button class="btn btn--ghost btn--sm" type="button" data-x>Fechar</button></div><label class="gsearch gsearch--dlg"><span class="sr">Buscar termo no glossário</span><input id="gq" type="search" placeholder="Buscar termo…" autocomplete="off"></label><div class="gloss" id="glist"></div></dialog>
+<dialog id="errs" class="gdlg" aria-label="Entenda o Erro"><div class="gdlg__bar"><h2>Entenda o Erro</h2><button class="btn btn--ghost btn--sm" type="button" data-x>Fechar</button></div><p class="gnote">Mensagens de erro não são broncas: são pistas. Veja o que cada uma significa e como corrigir.</p><div class="elist" id="elist"></div></dialog>
+<script src="js/lessons.js"></script>
+<script src="js/lessons2.js"></script>
+<script src="js/lessons3.js"></script>
+<script src="js/outputs.js"></script>
+<script src="js/editor.js"></script>
+<script src="js/main.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

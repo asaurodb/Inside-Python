@@ -22,7 +22,7 @@ global.IP = { errName: s => { const m = String(s || '').match(/(IndentationError
   run: (code, want) => { const r = run(code), vars = {}; (want || []).forEach(n => { if (n in (r.vars || {})) vars[n] = { t: typeof r.vars[n] === 'string' ? 'str' : 'num', v: r.vars[n] }; });
     return Promise.resolve({ out: r.out.replace(/\n$/, '') + (r.val !== null && r.val !== undefined ? '\n' + r.val : ''), err: r.err, vars }); },
   editor: o => { const ed = { el: mkEl('div'), code: o.code || '', get: () => ed.code, reset() { ed.code = o.code || ''; }, opts: o }; lastEditors.push(ed); return ed; } };
-['lessons.js', 'lessons2.js', 'lessons3.js', 'outputs.js'].forEach(f => (0, eval)(fs.readFileSync(path.join(__dirname, '../js', f), 'utf8')));
+['lessons.js', 'lessons2.js', 'lessons3.js', 'curriculo.js', 'outputs.js'].forEach(f => (0, eval)(fs.readFileSync(path.join(__dirname, '../js', f), 'utf8')));
 const L = window.LESSONS; let n = 0; const ok = (c, m) => { n++; assert(c, m); console.log('✔', m); };
 const hashchange = h => { location.hash = h; (winH.hashchange || []).forEach(f => f()); };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -30,18 +30,18 @@ const find = (el, pred) => { if (pred(el)) return el; for (const c of el.childre
 (async () => {
   (0, eval)(fs.readFileSync(path.join(__dirname, '../js/app.js'), 'utf8'));
   ok(reg['painel-in']._html.includes('Começar pela Aula 1') && reg.cta._q['span'].textContent === 'Comece Agora', 'Início: usuário novo vê "Começar pela Aula 1" e o botão "Comece Agora"');
-  hashchange('#aula-1-t1'); await sleep(10);
+  hashchange('#aula-1-t7'); await sleep(10);
   ok(reg.welcome.open, 'Boas-vindas: abre ao entrar na Aula 1 sendo usuário novo');
   const wclick = sel => (reg.welcome._h.click || []).forEach(f => f({ target: { closest: s => (s === sel ? {} : null) } }));
   wclick('[data-wn]'); wclick('[data-wn]'); ok(reg.wcount.textContent === 'Etapa 3 de 3', 'Boas-vindas: avança até a etapa 3 de 3');
   wclick('[data-wgo]'); ok(!reg.welcome.open && store['ip5:welcome'] === '1', '"Iniciar Aula 1" fecha e registra; não reaparece');
-  ok(reg.ctx._html.includes('Aula 1 — Conhecendo Python') && reg.ctx._html.includes('Tópico 1 — O que é Python') && reg.ctx._html.includes('Etapa 1 de 5 — Entenda'), 'Contexto visível: aula, tópico e "Etapa 1 de 5 — Entenda"');
-  ok(!store['ip3:progress'] || !JSON.parse(store['ip3:progress']).t['1.t1'], 'Abrir o tópico NÃO o marca como concluído');
+  ok(reg.ctx._html.includes('Aula 1 — Conhecendo Python') && reg.ctx._html.includes('Tópico 1 — O que é programação') && reg.ctx._html.includes('Etapa 1 de 5 — Entenda'), 'Contexto visível: aula, tópico e "Etapa 1 de 5 — Entenda"');
+  ok(!store['ip3:progress'] || !JSON.parse(store['ip3:progress']).t['1.t7'], 'Abrir o tópico NÃO o marca como concluído');
   const nextBtn = () => reg.lmain.children[reg.lmain.children.length - 1].children.slice(-1)[0];
   for (let i = 2; i <= 5; i++) { nextBtn()._h.click[0](); ok(reg.ctx._html.includes(`Etapa ${i} de 5 — ${['', '', 'Observe', 'Experimente', 'Pratique', 'Revise'][i]}`), `Continuar → Etapa ${i} de 5`); }
   nextBtn()._h.click[0](); const prog = JSON.parse(store['ip3:progress']);
-  ok(prog.t['1.t1'] === 1 && reg.ctx._html.includes('Tópico 2 —'), 'Concluir tópico: grava no localStorage e abre o Tópico 2');
-  ok(location.hash === '#aula-1-t2-s1' && reg.cta.getAttribute('href') === '#aula-1-t2-s1' || reg.cta.getAttribute('href').startsWith('#aula-1-t2'), 'Endereço e botão "Continuar Estudando" apontam para o tópico pendente');
+  ok(prog.t['1.t7'] === 1 && reg.ctx._html.includes('Tópico 2 —'), 'Concluir tópico: grava no localStorage e abre o Tópico 2');
+  ok(location.hash === '#aula-1-t1-s1' && reg.cta.getAttribute('href') === '#aula-1-t1-s1' || reg.cta.getAttribute('href').startsWith('#aula-1-t1'), 'Endereço e botão "Continuar Estudando" apontam para o tópico pendente');
   ok(reg.cta._q['span'].textContent === 'Continuar Estudando' && reg['painel-in']._html.includes('Continuar estudando'), 'Botão e painel mudam para "Continuar" após progresso');
   // exercício: rota direta, dicas progressivas, verificação real
   hashchange('#aula-1-e3'); await sleep(10); const card = reg['ex-e3'];

@@ -1,6 +1,6 @@
 // Boas-vindas: lógica real (extraída de app.js), cenários 1–5 e 8 do enunciado (6 e 7 exigem navegador: ver test-smoke).
 const fs = require('fs'), path = require('path'), assert = require('assert');
-global.window = {}; ['lessons.js', 'lessons2.js', 'lessons3.js'].forEach(f => eval(fs.readFileSync(path.join(__dirname, '../js', f), 'utf8')));
+global.window = {}; ['lessons.js', 'lessons2.js', 'lessons3.js', 'curriculo.js'].forEach(f => eval(fs.readFileSync(path.join(__dirname, '../js', f), 'utf8')));
 const app = fs.readFileSync(path.join(__dirname, '../js/app.js'), 'utf8'), L = window.LESSONS;
 const grab = (a, b) => app.slice(app.indexOf(a), app.indexOf(b, app.indexOf(a)));
 const src = grab('function norm0(', '\n') + '\n' + grab('function pct(', '\n') + '\n' + grab('/* ---- Retomada', '/* ---- fim boas-vindas');

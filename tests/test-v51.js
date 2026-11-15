@@ -39,19 +39,19 @@ const progress = () => JSON.parse(E.store['ip3:progress'] || '{}');
   wclick('[data-wgo]'); ok(!E.reg.welcome.open && E.store['ip5:welcome'] === '1' && E.reg.ctx._html.includes('Aula 1 — Conhecendo Python'), '2. "Iniciar Aula 1": fecha, registra e permanece na Aula 1');
   ok(!progress().t || Object.keys(progress().t).length === 0, '2b. A apresentação não marca nenhum conteúdo como concluído');
   // 3. pular
-  E.fresh(); E.load(E.app); E.hashchange('#aula-1-t1'); await E.sleep(10); ok(E.reg.welcome.open, '3. Novo usuário (aula 1): apresentação aberta');
-  wclick('[data-wskip]'); ok(!E.reg.welcome.open && E.store['ip5:welcome'] === '1' && E.reg.ctx._html.includes('Tópico 1 — O que é Python'), '3b. "Pular apresentação": fecha, registra e deixa a Aula 1 aberta');
+  E.fresh(); E.load(E.app); E.hashchange('#aula-1-t7'); await E.sleep(10); ok(E.reg.welcome.open, '3. Novo usuário (aula 1): apresentação aberta');
+  wclick('[data-wskip]'); ok(!E.reg.welcome.open && E.store['ip5:welcome'] === '1' && E.reg.ctx._html.includes('Tópico 1 — O que é programação'), '3b. "Pular apresentação": fecha, registra e deixa a Aula 1 aberta');
   // 3c. Esc
-  E.fresh(); E.load(E.app); E.hashchange('#aula-1-t1'); await E.sleep(10); (E.reg.welcome._h.cancel || []).forEach(f => f()); E.reg.welcome.close(); ok(E.store['ip5:welcome'] === '1', '3c. Escape (cancel) também registra a dispensa');
+  E.fresh(); E.load(E.app); E.hashchange('#aula-1-t7'); await E.sleep(10); (E.reg.welcome._h.cancel || []).forEach(f => f()); E.reg.welcome.close(); ok(E.store['ip5:welcome'] === '1', '3c. Escape (cancel) também registra a dispensa');
   // 4. volta depois (recarga simulada: mesmos dados, novo carregamento)
-  const salvo = Object.assign({}, E.store); E.fresh(salvo); E.load(E.app); E.click(E.reg.cta); E.hashchange('#aula-1-t1'); await E.sleep(10);
+  const salvo = Object.assign({}, E.store); E.fresh(salvo); E.load(E.app); E.click(E.reg.cta); E.hashchange('#aula-1-t7'); await E.sleep(10);
   ok(!E.reg.welcome.open, '4. Voltou depois (após recarregar a página): não aparece de novo');
   // 5. progresso de versão anterior
   const velho = { 'ip3:progress': JSON.stringify({ t: { '2.t1': 1, '2.t2': 1 }, e: { '2.e1': 1 }, q: {}, last: 2 }) };
   E.fresh(velho); E.load(E.app); ok(E.reg.cta._q['span'].textContent === 'Continuar Estudando', '5. Com progresso antigo, o botão vira "Continuar Estudando"');
   E.hashchange('#' + E.reg.cta.getAttribute('href').slice(1)); await E.sleep(10);
   const p = progress(); ok(!E.reg.welcome.open && p.t['2.t1'] === 1 && p.t['2.t2'] === 1 && p.e['2.e1'] === 1 && p.last === 2 || p.last >= 1, '5b. Com progresso antigo: sem boas-vindas e dados t/e preservados');
-  E.fresh(velho); E.load(E.app); E.hashchange('#aula-1-t1'); await E.sleep(10); ok(!E.reg.welcome.open, '5c. Mesmo abrindo a Aula 1 diretamente, quem tem progresso não vê a apresentação');
+  E.fresh(velho); E.load(E.app); E.hashchange('#aula-1-t7'); await E.sleep(10); ok(!E.reg.welcome.open, '5c. Mesmo abrindo a Aula 1 diretamente, quem tem progresso não vê a apresentação');
   // 6. reabertura voluntária pelo FAQ (não altera nada)
   E.fresh(velho); E.load(E.app); const antes = JSON.stringify(E.store); E.docClick({ closest: s => (s === '[data-welcome-open]' ? {} : null) }); E.hashchange('');
   ok(E.reg.welcome.open && E.reg.welcome._q['[data-wskip]'].textContent === 'Fechar apresentação', '6. "Ver apresentação inicial" (FAQ) abre a apresentação em modo voluntário');
@@ -60,12 +60,12 @@ const progress = () => JSON.parse(E.store['ip3:progress'] || '{}');
   E.fresh({ 'ip5:welcome': '1' }); E.load(E.app); E.docClick({ closest: s => (s === '[data-welcome-open]' ? {} : null) }); wclick('[data-wskip]'); ok(E.store['ip5:welcome'] === '1', '6d. Quem já tinha visto continua marcado como "visto" após rever');
   ok(fs.readFileSync(path.join(__dirname, '../index.html'), 'utf8').includes('data-welcome-open'), '6e. O link "Ver apresentação inicial" existe nas perguntas frequentes');
   // 7. persistência após atualizar a página
-  E.fresh(); E.load(E.app); E.hashchange('#aula-1-t1'); await E.sleep(10); wclick('[data-wskip]');
+  E.fresh(); E.load(E.app); E.hashchange('#aula-1-t7'); await E.sleep(10); wclick('[data-wskip]');
   const nb = () => E.reg.lmain.children[E.reg.lmain.children.length - 1].children.slice(-1)[0]; for (let i = 0; i < 5; i++) nb()._h.click[0]();
   const salvo2 = Object.assign({}, E.store); E.fresh(salvo2); E.load(E.app);
-  ok(JSON.parse(E.store['ip3:progress']).t['1.t1'] === 1 && E.reg.cta.getAttribute('href').startsWith('#aula-1-t2') && E.reg.cta._q['span'].textContent === 'Continuar Estudando', '7. Após atualizar a página: tópico concluído persiste e "Continuar Estudando" aponta para o tópico 2');
+  ok(JSON.parse(E.store['ip3:progress']).t['1.t7'] === 1 && E.reg.cta.getAttribute('href').startsWith('#aula-1-t1') && E.reg.cta._q['span'].textContent === 'Continuar Estudando', '7. Após atualizar a página: tópico concluído persiste e "Continuar Estudando" aponta para o tópico 2');
   // 8. armazenamento bloqueado
-  E.fresh({}, { blocked: true }); let err = null; try { E.load(E.app); E.hashchange('#aula-1-t1'); await E.sleep(10); ok(E.reg.welcome.open, '8. Armazenamento bloqueado: a apresentação abre normalmente'); wclick('[data-wskip]'); ok(!E.reg.welcome.open, '8b. ...e pode ser dispensada, sem erros'); } catch (e) { err = e; } assert(!err, 'erro com localStorage bloqueado: ' + (err && err.stack));
+  E.fresh({}, { blocked: true }); let err = null; try { E.load(E.app); E.hashchange('#aula-1-t7'); await E.sleep(10); ok(E.reg.welcome.open, '8. Armazenamento bloqueado: a apresentação abre normalmente'); wclick('[data-wskip]'); ok(!E.reg.welcome.open, '8b. ...e pode ser dispensada, sem erros'); } catch (e) { err = e; } assert(!err, 'erro com localStorage bloqueado: ' + (err && err.stack));
 
   /* ===== HORA DE PRATICAR: todos os exercícios, pela interface ===== */
   E.fresh({ 'ip5:welcome': '1' }); E.load(E.app); E.hashchange('#praticar'); await E.sleep(10);

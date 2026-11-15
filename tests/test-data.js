@@ -1,6 +1,6 @@
 // Consistência dos dados didáticos + resultados do "Observe" conferidos contra o CPython (js/outputs.js não pode estar desatualizado).
 const fs = require('fs'), path = require('path'), assert = require('assert'), { spawnSync } = require('child_process');
-global.window = {}; ['lessons.js', 'lessons2.js', 'lessons3.js', 'outputs.js'].forEach(f => eval(fs.readFileSync(path.join(__dirname, '../js', f), 'utf8')));
+global.window = {}; ['lessons.js', 'lessons2.js', 'lessons3.js', 'curriculo.js', 'outputs.js'].forEach(f => eval(fs.readFileSync(path.join(__dirname, '../js', f), 'utf8')));
 const L = window.LESSONS; let bad = 0; const no = m => { bad++; console.log('✘', m); };
 L.forEach(l => {
   const ids = l.topics.map(t => t.id); if (new Set(ids).size !== ids.length) no('ids de tópico repetidos na aula ' + l.id);

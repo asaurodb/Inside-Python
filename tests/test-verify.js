@@ -1,6 +1,6 @@
 // Executa a função REAL de verificação (extraída de app.js) contra todos os exercícios, com Python de verdade (CPython).
 const fs = require('fs'), path = require('path'), { spawnSync } = require('child_process');
-global.window = {}; eval(fs.readFileSync(path.join(__dirname, '../js/lessons.js'), 'utf8')); eval(fs.readFileSync(path.join(__dirname, '../js/lessons2.js'), 'utf8'));
+global.window = {}; ['lessons.js', 'lessons2.js', 'lessons3.js', 'curriculo.js'].forEach(f => eval(fs.readFileSync(path.join(__dirname, '../js', f), 'utf8')));
 const app = fs.readFileSync(path.join(__dirname, '../js/app.js'), 'utf8');
 const chunk = app.slice(app.indexOf('function lit('), app.indexOf('/* ---- Exercício padronizado ---- */'));
 const IP = { run: (code, want) => { const r = spawnSync('python3', [path.join(__dirname, 'pydriver.py')], { input: JSON.stringify({ code, want: want || [] }), encoding: 'utf8' }); const j = JSON.parse(r.stdout);
